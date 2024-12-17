@@ -1,1 +1,1 @@
-# Medassist is cool
+# Medassist
