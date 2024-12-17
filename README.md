@@ -1,2 +1,1 @@
 # Medassist
-# We SIgam Rizz
