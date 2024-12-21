@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
 
   button: {
     backgroundColor: 'rgb(1, 101, 252)',
-    width: '10%',
+    width: 100,
     color: 'white',
     paddingTop: 10,
     paddingBottom: 10,
