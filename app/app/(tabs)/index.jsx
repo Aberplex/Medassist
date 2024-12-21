@@ -1,71 +1,67 @@
-import { View, Text, StyleSheet, Pressable } from 'react-native'
-import React from 'react'
-import { Link } from 'expo-router'
+import { Image, StyleSheet, Platform, Pressable, Text, View} from 'react-native';
 
-const app = () => {
+import { HelloWave } from '@/components/HelloWave';
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import { Link } from 'expo-router';
+
+export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={icedCoffeeImg}
-        resizeMode="cover"
-        style={styles.image}
-      >
-        <Text style={styles.title}>Coffee Shop</Text>
-
-        <Link href="/contact" style={{ marginHorizontal: 'auto' }} asChild>
-          <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Contact Us</Text>
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerImage={
+        <Image
+          source={require('@/assets/images/partial-react-logo.png')}
+          style={styles.reactLogo}
+        />
+      }>
+      <View style={styles.titleContainer}>
+        <ThemedText type="title">Welcome!</ThemedText>
+        <HelloWave />
+      </View>
+        <Link href="/(tabs)/login" asChild>
+          <Pressable style={styles.button}> 
+            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold',}}> Log In </Text>
           </Pressable>
         </Link>
 
-      </ImageBackground>
-    </View>
-  )
+        <Link href="/(tabs)/signup" asChild>
+          <Pressable style={styles.button}> 
+            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold',}}> Sign Up </Text>
+          </Pressable>
+        </Link>
+
+    </ParallaxScrollView>
+  );
 }
 
-export default app
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
-  image: {
-    width: '100%',
-    height: '100%',
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
+  stepContainer: {
+    gap: 8,
+    marginBottom: 8,
   },
-  title: {
-    color: 'white',
-    fontSize: 42,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    marginBottom: 120,
+  reactLogo: {
+    height: 178,
+    width: 290,
+    bottom: 0,
+    left: 0,
+    position: 'absolute',
   },
-  link: {
-    color: 'white',
-    fontSize: 42,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    textDecorationLine: 'underline',
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    padding: 4,
-  },
+
   button: {
-    height: 60,
-    borderRadius: 20,
-    justifyContent: 'center',
-    backgroundColor: 'rgba(0,0,0,0.75)',
-    padding: 6,
-  },
-  buttonText: {
+    backgroundColor: 'rgb(1, 101, 252)',
+    width: '10%',
     color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
+    paddingTop: 10,
+    paddingBottom: 10,
     textAlign: 'center',
-    padding: 4,
+    borderRadius: 8,
+    fontWeight: 'bold',
   }
-})
+});
