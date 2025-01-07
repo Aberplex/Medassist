@@ -80,9 +80,13 @@ const SignupScreen = ({ navigation }) => {
           },
         ]
       );
-    } catch (error) {
+    } 
+
+    catch (error) {
       Alert.alert('Error', error.message || 'Registration failed. Please try again.');
-    } finally {
+    } 
+    
+    finally {
       setLoading(false);
     }
   };
@@ -153,14 +157,10 @@ const SignupScreen = ({ navigation }) => {
             </Text>
           </TouchableOpacity>
           
-          <Link href="/(tabs)/login" asChild>
-          <Pressable 
-            style={styles.loginLink}
-          >
-            <Text style={styles.loginLinkText}>
-              Already have an account? Login
-            </Text>
-          </Pressable>
+          <Link href="login">
+            <Pressable style={styles.loginLink}>
+              <Text style={styles.loginLinkText}>Already have an account? Login</Text>
+            </Pressable>
           </Link>
         </View>
       </ScrollView>

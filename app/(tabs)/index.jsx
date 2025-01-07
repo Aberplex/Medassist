@@ -1,51 +1,45 @@
-import { Image, StyleSheet, Platform, Pressable, Text, View} from 'react-native';
+import { StyleSheet, Pressable, Text, View} from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 import { Link } from 'expo-router';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <View style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </View>
-        <Link href="/(tabs)/login" asChild>
+    <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <ThemedText type="title">Medassist</ThemedText>
+        </View>
+        
+        <Link href="login" asChild>
           <Pressable style={styles.button}> 
             <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold',}}> Log In </Text>
           </Pressable>
         </Link>
 
-        <Link href="/(tabs)/signup" asChild>
+        <Link href="signup" asChild>
           <Pressable style={styles.button}> 
             <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold',}}> Sign Up </Text>
           </Pressable>
         </Link>
-
-    </ParallaxScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  container: {
+    flex: 1,
+    backgroundColor: 'rgba(161, 206, 220, 1)',
+    alignItems: 'center',
+  },
+
+  titleContainer:{
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    margin: 20,
     gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
+
   reactLogo: {
     height: 178,
     width: 290,
@@ -60,8 +54,11 @@ const styles = StyleSheet.create({
     color: 'white',
     paddingTop: 10,
     paddingBottom: 10,
+    margin: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
     textAlign: 'center',
     borderRadius: 8,
     fontWeight: 'bold',
-  }
+  },
 });

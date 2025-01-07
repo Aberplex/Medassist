@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { Link } from 'expo-router';
+import React, { useState} from 'react';
 import {
   View,
   Text,
@@ -8,6 +9,8 @@ import {
   KeyboardAvoidingView,
   Platform,
   Alert,
+  ScrollView,
+  Pressable,
 } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
@@ -83,12 +86,11 @@ const LoginScreen = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
         
-        <TouchableOpacity 
-          style={styles.forgotPasswordButton}
-          onPress={handleForgotPassword}
-        >
-          <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-        </TouchableOpacity>
+        <Link href="signup">
+          <Pressable style={styles.signupLink}>
+            <Text style={styles.signupLinkText}>Don't have an account? Signup</Text>
+          </Pressable>
+        </Link>
       </View>
     </KeyboardAvoidingView>
   );
@@ -133,11 +135,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
-  forgotPasswordButton: {
+  signupLink: {
     marginTop: 15,
     alignItems: 'center',
   },
-  forgotPasswordText: {
+  signupLinkText: {
     color: '#007AFF',
     fontSize: 14,
   },
